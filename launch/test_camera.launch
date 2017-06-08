@@ -1,0 +1,18 @@
+<!-- If the PrimeSense camera isn't accepted over USB, try plugging it in to a different port -->
+
+<launch>
+
+  <!-- launch camera -->
+  <include file="$(find openni2_launch)/launch/openni2.launch">
+    <!-- <arg name="device_id" value="#1"/> -->
+  </include>
+
+  <!-- launch tests -->
+  <node name="pcl_tests_node" pkg="pcl_tests" type="pcl_tests_node">
+	<param name="cloud_topic" value="/camera/depth_registered/points" />
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz"/>
+
+</launch>
+
